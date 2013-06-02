@@ -1,4 +1,9 @@
 # Django settings for admonisher project.
+import os
+
+PROJECT_ROOT = os.path.dirname(__file__)
+
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -123,6 +128,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
      'django.contrib.admin',
      'exotel',
+     'contacts',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
