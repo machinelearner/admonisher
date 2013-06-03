@@ -27,6 +27,7 @@ pip-log.txt
 .tox
 nosetests.xml
 ENV
+static
 data
 .DS_Store
 .idea

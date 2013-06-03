@@ -1,22 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css" />
     <title>{% block title %}Upload Contacts CSV{% endblock %}</title>
 </head>
-
 <body>
-    <div id="sidebar">
-        {% block sidebar %}
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/contacts/csv_upload">Contacts Upload</a></li>
+<div class="admonisher-container">
+    <h1>Admonisher</h1>
+    {% block sidebar %}
+        <ul >
+            <li style="list-style-type: None;"><a href="/admin">Home</a></li>
+            <li style="list-style-type: None;"><a href="/contacts/csv_upload">Contacts Upload</a></li>
+            <li style="list-style-type: None;"><a href="/defaulter/excel_upload">Defaulter Upload</a></li>
         </ul>
-        {% endblock %}
+    {% endblock %}
+</div>
+<div class="upload-container">
+    <span>
+         {% block content %}{% endblock %}
+        <!--<input id="tweet_text" class="string required" type="text" name="text" placeholder="Enter Text to Determine sentiment">-->
+    </span>
+</div>
     </div>
-
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+  </div> <!--! end of .container -->
+</div> <!--! end of #main -->
 </body>
 </html>
+

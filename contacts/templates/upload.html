@@ -4,6 +4,6 @@
 <form action="/contacts/csv_upload" enctype="multipart/form-data" method="post">{% csrf_token %}
 {{ form.as_p }}
 <!--<input type="file" name="file">-->
-<input type="submit" value="Submit" />
+<button id="generate_sentiment" type="submit" class="upload-button">Upload File</button>
 </form>
 {% endblock %}
