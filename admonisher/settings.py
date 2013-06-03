@@ -129,6 +129,7 @@ INSTALLED_APPS = (
      'django.contrib.admin',
      'exotel',
      'contacts',
+     'admonish_defaulter',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

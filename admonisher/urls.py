@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from contacts.views import upload_contacts_csv
-
+from admonish_defaulter.views import upload_defaulter_excel_sheet
 
 admin.autodiscover()
 
@@ -22,5 +22,6 @@ urlpatterns = patterns('',
     ######                      ######
     #url(r'',)
     url(r'^contacts/csv_upload$', upload_contacts_csv),
+    url(r'defaulter/excel_upload',upload_defaulter_excel_sheet),
 
 )

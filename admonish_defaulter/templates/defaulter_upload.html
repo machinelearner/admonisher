@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/defaulter/excel_upload" enctype="multipart/form-data" method="post">{% csrf_token %}
+{{ form.as_p }}
+<!--<input type="file" name="file">-->
+<!--<input type="text" name="message">-->
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}
