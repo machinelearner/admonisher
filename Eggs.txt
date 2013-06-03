@@ -1,3 +1,6 @@
 Django==1.5.1
+MySQL-python==1.2.4
 gdata==2.0.17
+requests==1.2.3
 wsgiref==0.1.2
+xlrd==0.9.2
