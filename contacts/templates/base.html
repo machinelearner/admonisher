@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/style.css" />
-    <title>{% block title %}Upload Contacts CSV{% endblock %}</title>
+    <title>{% block title %}Admonisher Upload Page{% endblock %}</title>
 </head>
 <body>
 <div class="admonisher-container">
     <h1>Admonisher</h1>
     {% block sidebar %}
         <ul >
-            <li style="list-style-type: None;"><a href="/admin">Home</a></li>
-            <li style="list-style-type: None;"><a href="/contacts/csv_upload">Contacts Upload</a></li>
+            <li style="list-style-type: None;"><a href="/admin">Admin</a></li>
             <li style="list-style-type: None;"><a href="/defaulter/excel_upload">Defaulter Upload</a></li>
+            <li style="list-style-type: None;"><a href="/contacts/csv_upload">Contacts Upload</a></li>
         </ul>
     {% endblock %}
 </div>
