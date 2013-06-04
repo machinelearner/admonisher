@@ -17,7 +17,7 @@ def upload_defaulter_excel_sheet(request):
             from_number = request.POST['from_number']
             defaulter_phone_hash = Contact.get_phone_number_for_defaulters(list_of_defaulter_id)
             send_sms_to_defaulters(request.user,from_number,defaulter_phone_hash,message)
-            return HttpResponseRedirect('/admin/contacts/contact/')
+            return HttpResponseRedirect('/')
     else:
         form = DefaulterUploadForm()
     return render_to_response('defaulter_upload.html', {'form': form}, RequestContext(request))
