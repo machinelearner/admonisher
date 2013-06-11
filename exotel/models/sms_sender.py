@@ -2,6 +2,7 @@ import requests
 from xml.etree import ElementTree
 
 class SMSSender():
+    BASE_INSPECTION_URL = "https://%s:%s@twilix.exotel.in"
     class Meta:
         app_label = 'exotel'
 
@@ -26,6 +27,6 @@ class SMSSender():
             status = tree.find('.//Status').text
             to = tree.find('.//To').text
             url = tree.find('.//Uri').text
-            message = "SMS request posted to Exotel. %s to %s. More info: %s" %(status,to,url)
-        print message
+            inspection_url = self.BASE_INSPECTION_URL %(self.api_token.sid,self.api_token.token) + url
+            message = "SMS request posted to Exotel. %s to %s. More info: %s" %(status,to, inspection_url)
         return message

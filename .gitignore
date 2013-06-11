@@ -31,3 +31,4 @@ static
 data
 .DS_Store
 .idea
+*.log
