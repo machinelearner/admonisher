@@ -3,29 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css" />
-    <title>{% block title %}Admonisher Upload Page{% endblock %}</title>
+<link rel="stylesheet" href="/static/style.css" />
+<title>{% block title %}Admonisher Upload Page{% endblock %}</title>
 </head>
 <body>
 <div class="admonisher-container">
     <h1>Admonisher</h1>
     {% block sidebar %}
-        <ul >
-            <li style="list-style-type: None;"><a href="/admin">Admin</a></li>
-            <li style="list-style-type: None;"><a href="/defaulter/excel_upload">Defaulter Upload</a></li>
-            <li style="list-style-type: None;"><a href="/contacts/csv_upload">Contacts Upload</a></li>
-        </ul>
+    <ul >
+        <li style="list-style-type: None;"><a href="/admin">Admin</a></li>
+        <li style="list-style-type: None;"><a href="/defaulter/excel_upload">Defaulter Upload</a></li>
+        <li style="list-style-type: None;"><a href="/contacts/csv_upload">Contacts Upload</a></li>
+    </ul>
     {% endblock %}
 </div>
 <div class="upload-container">
     <span>
-         {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
         <!--<input id="tweet_text" class="string required" type="text" name="text" placeholder="Enter Text to Determine sentiment">-->
     </span>
 </div>
-    </div>
-  </div> <!--! end of .container -->
-</div> <!--! end of #main -->
+
+<div id="info-messages">
+    <ul>
+        {% for message in info_messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+</div>
+
 </body>
 </html>
 
