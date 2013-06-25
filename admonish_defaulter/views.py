@@ -44,8 +44,8 @@ def send_sms_to_defaulters(user,from_number,defaulter_phone_hash,message):
             response_messages.append(response_message)
             logger.debug(response_message)
         else:
-            message = "Could not find mobile number for %s!!!! Message not sent" %(defaulter_id)
-            response_messages.append(message)
-            logger.error(message)
+            error_message = "Could not find mobile number for %s!!!! Message not sent" %(defaulter_id)
+            response_messages.append(error_message)
+            logger.error(error_message)
     return response_messages
 
