@@ -22,6 +22,7 @@ class LDAPToken(models.Model):
             print e
 
     def get_other_mobile_for_id(self, uid_number, search_parameters):
+        print "####################", uid_number, "       ", search_parameters
         base_dn = search_parameters.base_dn
         search_scope = search_parameters.search_scope
         search_filter = search_parameters.search_filter + "=%s" % (uid_number)
@@ -31,9 +32,12 @@ class LDAPToken(models.Model):
             [str(retrieve_attributes)])
         time.sleep(0.2) #wait for AD to return
         result_type, result_data = self.ldap_connection.result(ldap_result_id, 0)
-        result_list = result_data[0][1]['otherMobile']
-        result_list = map(lambda x: self.get_valid_number(x), result_list)
-
+        result_list = []
+        try:
+            result_list = result_data[0][1]['otherMobile']
+            result_list = map(lambda x: self.get_valid_number(x), result_list)
+        except KeyError:
+            pass
         return result_list
 
     def get_valid_number(self, number_string):
