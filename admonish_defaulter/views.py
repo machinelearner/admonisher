@@ -21,7 +21,7 @@ def upload_defaulter_excel_sheet(request):
             message = request.POST['message']
             from_number = request.POST['from_number']
             defaulter_phone_hash = Contact.get_phone_number_for_defaulters(list_of_defaulter_id)
-            response_messages = send_sms_to_defaulters(request.user,from_number,defaulter_phone_hash,message)
+            response_messages += send_sms_to_defaulters(request.user,from_number,defaulter_phone_hash,message)
             form = DefaulterUploadForm()
         else:
             if form.is_valid():
