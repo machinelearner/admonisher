@@ -15,6 +15,9 @@ def upload_defaulter_excel_sheet(request):
         form = DefaulterUploadForm(request.POST, request.FILES)
         if form.is_valid() and LDAPToken.exists() and LDAPSearchParameters.exists():
             list_of_defaulter_id = DefaulterAction.extract_defaulter_ids_from_excel(request.FILES['file'])
+            if not list_of_defaulter_id:
+                response_messages.append("The File format has changed; Upload file with following headers")
+                response_messages.append(DefaulterAction.EXCEL_SHEET_HEADER)
             message = request.POST['message']
             from_number = request.POST['from_number']
             defaulter_phone_hash = Contact.get_phone_number_for_defaulters(list_of_defaulter_id)
