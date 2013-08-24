@@ -44,8 +44,8 @@ def send_sms_to_defaulters(user,from_number,defaulter_phone_hash,message):
     for defaulter_id,phone in defaulter_phone_hash.iteritems():
         if phone != Contact.DEFAULT_INVALID_NUMBER:
             response_message = sms_sender.send_one(phone,message)
-            response_messages.append(response_message)
-            logger.debug(response_message)
+            response_messages.append("Defaulter ID:%s     " %(str(defaulter_id)) + response_message)
+            logger.debug("Defaulter ID:%s     " %(str(defaulter_id)) + response_message)
         else:
             error_message = "Could not find mobile number for %s!!!! Message not sent" %(defaulter_id)
             response_messages.append(error_message)
