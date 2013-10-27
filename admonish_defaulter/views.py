@@ -4,7 +4,7 @@ from django.template import RequestContext
 from admonish_defaulter.forms import DefaulterUploadForm
 from admonish_defaulter.models import DefaulterAction
 from contacts.models import Contact, LDAPSearchParameters, LDAPToken
-from exotel.models import SMSSender,APIToken
+from exotel.models import SMSDispatcher,APIToken
 import logging
 logger = logging.getLogger(__name__)
 
@@ -40,10 +40,10 @@ def send_sms_to_defaulters(user,from_number,defaulter_phone_hash,message):
         logger.error("No API TOKEN Associated with authenticated user!! Messages not sent")
         return
     api_token = api_token[0]
-    sms_sender = SMSSender(from_number,api_token)
+    sms_dispatcher = SMSDispatcher(from_number,api_token)
     for defaulter_id,phone in defaulter_phone_hash.iteritems():
         if phone != Contact.DEFAULT_INVALID_NUMBER:
-            response_message = sms_sender.send_one(phone,message)
+            response_message = sms_dispatcher.send_one(phone,message)
             response_messages.append("Defaulter ID:%s     " %(str(defaulter_id)) + response_message)
             logger.debug("Defaulter ID:%s     " %(str(defaulter_id)) + response_message)
         else:

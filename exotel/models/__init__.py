@@ -1,2 +1,2 @@
-from exotel.models.api_token import APIToken
-from exotel.models.sms_sender import SMSSender
+from api_token import APIToken
+from sms_dispatcher import SMSDispatcher

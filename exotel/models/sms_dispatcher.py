@@ -1,8 +1,10 @@
 import requests
 from xml.etree import ElementTree
 
-class SMSSender():
+
+class SMSDispatcher():
     BASE_INSPECTION_URL = "https://%s:%s@twilix.exotel.in"
+
     class Meta:
         app_label = 'exotel'
 

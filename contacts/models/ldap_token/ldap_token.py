@@ -1,3 +1,4 @@
+import json
 from django.db import models
 import ldap, time, re
 
@@ -15,8 +16,8 @@ class LDAPToken(models.Model):
         try:
             ldap.set_option(ldap.OPT_X_TLS_REQUIRE_CERT, 0)
             ldap_connection = ldap.initialize(self.server_ip, trace_level=1)
-            time.sleep(0.5)  #wait for AD to authenticate
             ldap_connection.simple_bind_s(self.auth_credential, self.password)
+            time.sleep(0.5)  #wait for AD to authenticate
             self.ldap_connection = ldap_connection
         except ldap.LDAPError, e:
             print e
@@ -34,8 +35,9 @@ class LDAPToken(models.Model):
         result_type, result_data = self.ldap_connection.result(ldap_result_id, 0)
         result_list = []
         try:
-            result_list = result_data[0][1]['otherMobile']
-            result_list = map(lambda x: self.get_valid_number(x), result_list)
+            if(result_data):
+                result_list = result_data[0][1]['otherMobile']
+                result_list = map(lambda x: self.get_valid_number(x), result_list)
         except KeyError:
             pass
         return result_list
